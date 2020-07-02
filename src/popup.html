@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borderify Popup</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: hsl(330, 100%, 71%);
+            --secondary-color: hsl(0, 0%, 61%);
+
+            --primary-color-highlight: hsl(330, 100%, 61%);
+            --secondary-color-highlight: hsl(0, 0%, 51%);
+        }
+
+        body {
+            margin: 0;
+            padding: 12px;
+            background: #DFDFDF;
+            width: 258px;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 34px;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        section {
+            margin: 16px auto;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 34px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 4px;
+            font-size: 14px;
+            padding: 6px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-color);
+        }
+
+        input[type="checkbox"] {
+            height: 34px;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            height: 34px;
+        }
+
+        .checkbox input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .checkbox__label {
+            background-color: var(--secondary-color);
+            color: #FFF;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px;
+            border-radius: 4px;
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            height: 100%;
+            line-height: 1.5;
+        }
+
+        input:checked+.checkbox__label {
+            background-color: var(--primary-color);
+        }
+
+        .checkbox:hover .checkbox__label {
+            background-color: var(--secondary-color-highlight);
+        }
+
+        .checkbox:hover input:checked+.checkbox__label {
+            background-color: var(--primary-color-highlight);
+        }
+
+        .checkbox:active .checkbox__label {
+            box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 10px;
+        }
+
+        .icon-asterisk {
+            font-size: 1.4em;
+            position: relative;
+            top: -1px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Borderify</h1>
+    </header>
+
+    <main>
+        <section class="filter">
+            <input type="text" placeholder="CSS Selector...">
+        </section>
+
+        <section class="options">
+            <label class="option checkbox" for="option-1">
+                <input id="option-1" class="option" type="checkbox" value="*">
+                <span class="checkbox__label"><span class="icon-asterisk">*</span></span>
+            </label>
+
+            <label class="option checkbox" for="option-2">
+                <input id="option-2" class="option" type="checkbox" value="div">
+                <span class="checkbox__label">div</span>
+            </label>
+
+            <label class="option checkbox" for="option-3">
+                <input id="option-3" class="option" type="checkbox" value="span">
+                <span class="checkbox__label">span</span>
+            </label>
+        </section>
+
+        <!-- <section>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </section> -->
+    </main>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
