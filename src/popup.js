@@ -14,8 +14,8 @@ options.forEach((option) => {
 function updateStylesheet() {
     let css = '';
 
-    const selectors = []
-        .filter.call(options, (option) => {
+    const selectors = Array.from(options)
+        .filter((option) => {
             if (option.type === 'checkbox') {
                 return option.checked;
             } else if (option.type === 'text') {
@@ -34,7 +34,4 @@ function updateStylesheet() {
     browser.tabs.query({ currentWindow: true, active: true }, (tabs) => {
         browser.tabs.sendMessage(tabs[0].id, { action: 'update', css: css });
     });
-
-    // const textarea = document.querySelector('textarea');
-    // textarea.textContent = css;
 }
